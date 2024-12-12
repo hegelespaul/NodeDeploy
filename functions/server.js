@@ -89,5 +89,5 @@ app.post('/update-geojson', (req, res) => {
 //     console.log(`Server running at http://localhost:${port}`);
 // });
 
-app.use('/.netlify/functions/api', router);
+app.use('/.netlify/functions/server', router);
 module.exports.handler = serverless(app);
