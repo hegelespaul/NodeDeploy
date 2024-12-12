@@ -12,13 +12,10 @@
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-    
-    <!-- Hoja de estilos personalizada -->
-    <link rel="stylesheet" href="css/mapa.css" />
+        
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Título de la página -->
-    <title>Mi Primer Mapa Interactivo</title>
-    
     <!-- Agregar icono de la página (opcional) -->
     <link rel="icon" href="https://www.ler.uam.mx/microcbi/wp-content/uploads/2023/09/UAML.png" type="image/png">
     
@@ -26,14 +23,31 @@
     <link rel="dns-prefetch" href="https://unpkg.com">
 </head>
 
-<body>
+<body class="h-screen bg-gray-100 flex flex-col">
+
     <!-- Título principal de la página -->
-    <header>
-        <h1 class="text-3xl font-bold underline">MI PRIMER MAPA INTERACTIVO</h1>
+    
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Title -->
+            <h1 class="text-3xl">SuperMapeo</h1>
+            
+            <!-- Navigation Links -->
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
+                    <li><a href="/mapa" class="text-white hover:text-gray-200">Mapa</a></li>
+                    <li><a href="/formulario" class="text-white hover:text-gray-200">Formulario</a></li>
+                    <li><a href="/about" class="text-white hover:text-gray-200">Sobre Nosotrxs</a></li>
+
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Contenedor para el mapa -->
-    <div id="mapa"></div>
+
+    <!-- Contenedor para el mapa que ocupa el 100% del tamaño restante -->
+    <div id="mapa" class="flex-1"></div>
 
     <!-- Script JS de Leaflet y tu archivo JS personalizado -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>

@@ -7,64 +7,67 @@
   <title>Formulario con Mapa</title>
   <!-- Estilo para el mapa -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Estilo para el mapa */
-    #map {
-      height: 400px; /* Altura del mapa */
-      margin-top: 20px; /* Espaciado superior */
-    }
-
-    /* Estilo para el formulario */
-    form {
-      max-width: 600px; /* Máximo ancho del formulario */
-      margin: 0 auto; /* Centrado del formulario */
-    }
-
-    label {
-      display: block; /* Hacer que la etiqueta ocupe una línea completa */
-      margin-top: 10px; /* Espaciado superior */
-    }
-
-    input,
-    textarea {
-      width: 100%; /* Ancho completo para los campos de entrada */
-      padding: 8px; /* Relleno dentro de los campos */
-      margin-top: 5px; /* Espaciado superior */
-    }
-
-    button {
-      margin-top: 20px; /* Espaciado superior */
-      padding: 10px 20px; /* Relleno del botón */
-      background-color: #007BFF; /* Color de fondo del botón */
-      color: white; /* Color del texto del botón */
-      border: none; /* Sin borde */
-      cursor: pointer; /* Cursor de mano al pasar por encima */
-    }
-
-    button:hover {
-      background-color: #0056b3; /* Color de fondo del botón cuando se pasa el mouse */
+    .leaflet-control-attribution {
+      display: none;
     }
   </style>
 </head>
 
 <body>
-  <!-- Título de la página -->
-  <h1 style="text-align: center;">Formulario con Mapa Interactivo</h1>
 
-  <!-- Formulario para ingresar datos -->
-  <form id="data-form">
-    <label for="title">Título:</label>
-    <input type="text" id="title" name="title" required /> <!-- Campo de texto para el título -->
+  <header class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Title -->
+      <h1 class="text-3xl">SuperMapeo</h1>
 
-    <label for="description">Descripción:</label>
-    <textarea id="description" name="description" rows="4" required></textarea> <!-- Campo de texto para la descripción -->
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
+          <li><a href="/mapa" class="text-white hover:text-gray-200">Mapa</a></li>
+          <li><a href="/formulario" class="text-white hover:text-gray-200">Formulario</a></li>
+          <li><a href="/about" class="text-white hover:text-gray-200">Sobre Nosotrxs</a></li>
 
-    <!-- Div para mostrar el mapa -->
-    <div id="map"></div>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Botón para guardar los datos -->
-    <button type="button" id="save-button">Guardar Datos</button>
-  </form>
+<br><br><br><br>
+  <!-- Contenedor principal del formulario y mapa -->
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+
+    <!-- Formulario para ingresar datos -->
+    <form id="data-form" class="space-y-6">
+      <!-- Título -->
+      <div>
+        <label for="title" class="block text-lg font-semibold">Título:</label>
+        <input type="text" id="title" name="title" required
+          class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Descripción -->
+      <div>
+        <label for="description" class="block text-lg font-semibold">Descripción:</label>
+        <textarea id="description" name="description" rows="4" required
+          class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+
+      <!-- Div para mostrar el mapa -->
+      <div id="map" class="h-96 rounded-lg"></div>
+
+      <!-- Botón para guardar los datos -->
+      <div class="flex justify-center">
+        <button type="button" id="save-button"
+          class="px-6 py-3 mt-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Guardar Datos
+        </button>
+      </div>
+    </form>
+
+  </div>
 
   <!-- Scripts necesarios para Leaflet y funcionalidad del mapa -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -76,11 +79,11 @@
     let longitude = null;
 
     // Inicializar el mapa centrado en coordenadas globales (0, 0)
-    const map = L.map('map').setView([0, 0], 2); // El mapa empieza con un zoom de nivel 2
+    const map = L.map('map').setView([19.291094, -99.498646], 16); // El mapa empieza con un zoom de nivel 2
 
     // Añadir la capa de mapa base (OpenStreetMap) al mapa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors' // Atribución de la capa de mapa
+      attribution: '' // Atribución de la capa de mapa
     }).addTo(map);
 
     // Crear un marcador para el mapa

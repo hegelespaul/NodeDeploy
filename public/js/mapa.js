@@ -2,7 +2,7 @@
 let geojsonFeature;
 
 // Crear el mapa centrado en unas coordenadas específicas
-var map = L.map('mapa').setView([19.2906, -99.4985], 17);
+var map = L.map('mapa').setView([19.2906, -99.4985], 16);
 
 // Cargar el mapa con un estilo oscuro (puedes descomentar el estilo de OpenStreetMap si lo prefieres)
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {

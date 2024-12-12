@@ -31,6 +31,11 @@ app.get('/mapa', (req, res) => {
     res.sendFile(path.join(__dirname, 'mapa.html'));
 });
 
+// Ruta para servir el archivo HTML del about.html)
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'about.html'));
+});
+
 /////////////////////////////////////// PROCESOS ///////////////////////////////////////////
 
 // Endpoint para obtener el archivo GeoJSON
