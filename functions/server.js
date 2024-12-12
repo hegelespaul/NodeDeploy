@@ -5,6 +5,8 @@ const fs = require('fs');           // Módulo para trabajar con el sistema de a
 const app = express();              // Crear la aplicación Express
 const port = 3000;                  // Puerto donde el servidor escuchará
 const cors = require('cors');       // Middleware para habilitar CORS (Cross-Origin Resource Sharing)
+const serverless = require('serverless-http');
+const router = express.Router();
 
 // Middleware para parsear cuerpos de solicitud en formato JSON
 app.use(express.json());
@@ -83,6 +85,9 @@ app.post('/update-geojson', (req, res) => {
 });
 
 // Iniciar el servidor en el puerto especificado
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server running at http://localhost:${port}`);
+// });
+
+app.use('/.netlify/functions/api', router);
+module.exports.handler = serverless(app);
