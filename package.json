@@ -1,4 +1,10 @@
 {
+  "main": "functions/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "netlify deploy --prod",
+    "start": "node functions/server.js"
+  },
   "dependencies": {
     "cords": "^1.0.4",
     "cors": "^2.8.5",
